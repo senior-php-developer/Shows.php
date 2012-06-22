@@ -1,0 +1,20 @@
+#news .story {line-height:150%; margin:10px; padding:15px;}
+#news .story h4 {font-size:15px; margin: 10px;}
+#news .story ul {list-style:square inside none;}
+
+#latest {overflow: hidden;}
+#latest .list {margin:auto; overflow:hidden; width:950px;}
+#latest a {text-decoration: none;}
+#latest .show {background: #1F587B; border:1px solid #333333; float:left;padding:5px; position: relative; margin: 10px; cursor: pointer;}
+#latest .show img {border: 1px solid #333;}
+#latest .show .overlay {display: none; background: rgba(0,0,0,0.7); height:100%; left:0; position:absolute; text-align:center; top:0;width:100%;}
+#latest .show:hover .overlay {display: block;}
+#latest .show .overlay div {font-size:25px; font-weight:bold; position:relative; top:130px; text-shadow: 0 1px 1px #000;}
+
+#all .list {overflow: hidden;}
+#all a:hover {text-decoration: none;}
+#all .show {float:left; height:34px; margin:5px 0; width: 166px;}
+#all .show img {border :2px solid; margin-right:7px; vertical-align:middle;}
+
+#other {width: 1040px; margin: auto;}
+#other>div {width: 45%;}

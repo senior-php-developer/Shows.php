@@ -1,0 +1,54 @@
+/*** CUSTOM CLASSES ***/
+
+.lt {float: left;}
+.rt {float: right;}
+.clr {overflow: hidden;}
+.clear {clear: both; width: 0; height: 0;}
+.hide {display: none;}
+
+
+/*** DOCUMENT GLOBALS ***/
+
+body {background: url(img/body.png); color: #d0cd96; font-size: 13px; font-family: trebuchet MS;}
+a {color: #CFCFA4; text-decoration: none; font-family: 'trebuchet MS'; text-shadow:0 1px 0 #000000;}
+a:hover {text-decoration: underline;}
+a:active {position: relative; top: 2px; border: none; outline: 0 none;}
+a:focus {border: none; outline: 0 none;}
+
+h1 {}
+h2 {}
+h3 {margin: 5px 0;}
+h4 {}
+
+p {margin: 5px 0; line-height: 140%;}
+
+textarea {vertical-align: baseline;}
+
+dt, dd {display: inline;}
+
+table {margin: 10px 0;}
+td {padding: 4px 8px; border: 1px solid;}
+th {padding: 5px 8px; text-align: left; border: 1px solid;}
+
+.wrap {width: 1000px; margin: auto;}
+
+
+#nav {background: #2a2b30; -ms-opacity: 0.5; background: rgba(20,20,20,0.6); font-size: 14px; padding: 7px;}
+#nav .wrap {text-align: right; }
+#nav a {margin: 0 5px;}
+
+#logo {margin:-22px auto -15px; width:1000px;}
+
+
+.block {background: url(img/block.png) repeat-x top #101317; margin: 10px auto; padding: 20px;}
+.block h2 {font-family: 'Days'; font-weight: normal; font-size: 22px; border-bottom: 1px solid; padding-bottom: 10px; margin-bottom: 10px; text-shadow: 0 3px 2px #000; }
+
+/*** TYPOGRAPHY ***/
+
+@font-face {font-family: 'Days'; src: url('fonts/Days-webfont.eot'); src: local('°'), url('fonts/Days-webfont.ttf') format('truetype'); font-weight: normal; font-style: normal;}
+
+
+
+/** facebook **/
+.connect_widget_text {color: #90cd96 !important;}
+  

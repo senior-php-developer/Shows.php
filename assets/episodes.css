@@ -1,0 +1,9 @@
+#watch .video {float: left; padding-right: 10px; border-right: 1px solid;}
+#watch .info {float:right; padding:2px; width:370px;}
+
+#watch p {margin: 0 0 10px;}
+
+
+#watch .comments {display: none; float:right; width:370px;}
+
+.sources-list a {background: #39427D; padding:2px 5px;}

@@ -1,0 +1,10 @@
+.like, .wallkit_subtitle {display: none;}
+a {color: #BFBA79;}
+.comment_body {color: #bbb !important;}
+.UIContentBox {color: #bbb !important;}
+.uiBoxGray {background-color:#1B2333; border:1px solid #6A7385;}
+.wallkit_form textarea {height: 14px;}
+.wallkit_posts {height:280px; overflow:auto;}
+.UISettingsEditor_content label {color: #bbb;}
+.wallkit_form div.text_spacer {float:left; width:250px; padding-right: 0px;}
+.wallkit_form div.post_area div.connected {display: none;}

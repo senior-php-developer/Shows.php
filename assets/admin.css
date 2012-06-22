@@ -1,0 +1,12 @@
+button {vertical-align: middle; padding: 1px 5px;}
+input {padding: 2px;} 
+
+.edit-show textarea {height:130px; width:280px; vertical-align: top;}
+.edit-show input {width: 150px;}
+
+.edit-episodes textarea {height:100px; width:340px;} 
+
+.episode-list input.start {border:2px solid #3D64D6;}
+
+
+.add-episode textarea {border:1px solid; height:200px; position:absolute; width:400px;}

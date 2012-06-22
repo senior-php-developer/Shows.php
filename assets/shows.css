@@ -1,0 +1,20 @@
+#show .image {width: 1000px;height:400px;}
+#show h3 {margin: 10px 0;}
+#show .links a {margin-right: 10px;}
+#show .descr {float:left; margin:15px 10px; padding:5px 10px; width:590px; border-radius: 5px; box-shadow: 0 0 4px #fff;}
+#show .other {float:right; margin:10px 0; width: 360px;}
+
+#series {}
+
+#seasons {float:left; width:130px;}
+#seasons .season {margin:0 10px 10px; padding:10px; text-align:center; background: #454951; border:1px solid #16171A; cursor: pointer; color: #a8a57d; border-radius: 10px;}
+#seasons .season:hover {text-shadow: 0 1px 1px #000;}
+#seasons .season.active {background: #a8a57d; color: #1f252c; border: none;}
+#seasons .season.active:hover {text-shadow: none;}
+
+#episodes {float: right; padding:7px; width:849px; border-left: 1px solid; }
+#episodes .episode {float: left; width: 200px; height:126px; margin:0 6px 15px; position: relative;}
+#episodes .episode img {border: 2px solid;}
+#episodes .episode div {left:2px; padding:5px; position:absolute; top:2px; width:190px; background: rgba(0,0,0,0.7); line-height: 135%;}
+#episodes a:active {position: static; top: 0;}
+
