@@ -3,13 +3,14 @@
 	<div class="video">{video_url}</div>
 	<div class="info">
 		<p class='sources-list'>{sources_list}</p>
-		<p>Title: {title}</p>
+		<p>Title:<b> {title}</b></p>
 		<p>Director: {director}</p>
 		<p>Aired: {air_date}</p>
 		<h3>Description:</h3>
 		<p>{descr}</p>
-		<p>Rating: {rating_plugin}</p>
+		<br><br>
 		<p>{share_buttons}</p>
+		<p>{sources}</p>
 	</div>
 	<div class="clear"></div>
 </div>

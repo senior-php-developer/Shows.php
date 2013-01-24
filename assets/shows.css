@@ -13,8 +13,8 @@
 #seasons .season.active:hover {text-shadow: none;}
 
 #episodes {float: right; padding:7px; width:849px; border-left: 1px solid; }
-#episodes .episode {float: left; width: 200px; height:126px; margin:0 6px 15px; position: relative;}
-#episodes .episode img {border: 2px solid;}
+#episodes .episode {float: left; width: 200px; height:155px; margin:0 6px 15px; position: relative;}
+#episodes .episode img {border: 2px solid; width: 200px;}
 #episodes .episode div {left:2px; padding:5px; position:absolute; top:2px; width:190px; background: rgba(0,0,0,0.7); line-height: 135%;}
 #episodes a:active {position: static; top: 0;}
 

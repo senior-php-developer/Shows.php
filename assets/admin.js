@@ -6,8 +6,7 @@ $(function(){
 	$('button.lookup-episodes').click(lookupEpisode);
 	$('button.add-episodes').live('click',addEpisodes);
 	
-	$('button.save-sources-eng').live('click',saveSourcesEng);
-	$('button.save-sources-rus').live('click',saveSourcesRus);
+	$('button.save-sources').live('click',saveSources);
 	
 	$('.episode-list input').click(function(){
 		$('.episode-list input').removeClass('start');
@@ -19,14 +18,12 @@ $(function(){
 		if ($('.add-episode textarea').css('display') == 'none') {
 			$('.add-episode textarea').slideDown();
 		} else {
-			var urls = $('.add-episode textarea').val();
-			urls = urls.split('\n');
+			var imgs = $('.add-episode textarea').val();
+			imgs = urls.split('\n');
 			var el = $('.episode-list input.start');
-			var en = el.hasClass('en');
 			for(var k in urls) {
-				el.val(urls[k].replace(/<iframe src="/,'').replace(/" width="607" height="360" frameborder="0"><\/iframe>/,''));
-				if (en) el = el.parent().parent().next().find('.en');
-				else		el = el.parent().parent().next().find('.ru');
+				el.val(url);
+				el = el.parent().parent().next().find('.img');
 			}
 			$('.add-episode textarea').hide();
 		}		
@@ -37,8 +34,9 @@ $(function(){
 
 function lookupEpisode() {
 	i = 0;
-	info.url = $('.add-episode input').val();
+	info.url = $(this).attr('data-url');
 	info.show = $(this).attr('data-show');
+	info.eps = $('.add-episode .eps').val().split(' ');
 	$.post('/get', {url: info.url}, function(r) {
 		$('.edit-episodes').append('<table id="ep-table"><tr><th>Season</th><th>Episode</th><th>Title</th><th>Director</th><th>Air date</th><th>Description</th></tr>');
 		$(r).find('div > div > div').each(function(){
@@ -49,6 +47,12 @@ function lookupEpisode() {
 				info.episode = title[2];
 				info.title = title[3];
 			} 
+			if (info.eps[0] && info.eps[0] !== "" && parseInt(info.season, 10)<parseInt(info.eps[0])) {
+				return true;
+			}
+			if (info.eps[1] && info.eps[1] !== "" && parseInt(info.season, 10)>parseInt(info.eps[1])) {
+				return false;
+			}
 			info.descr = $(this).parent().find('p').text();
 			info.director = $(this).find('span').filter(function(){
 				return $(this).text() == 'Director:';			
@@ -73,43 +77,19 @@ function addEpisodes() {
 		data[$(this).attr('name')] = $(this).val();	
 	});
 	data['show'] = info.show;
-	data['i'] = i;
+	data['total'] = ($('#ep-table tr').size() - 1);
 	$.post('/add/show/'+info.show, data, function(r) {
 		alert(r);
+		location.reload();
 	});
 
 
 }
 
 function lookupShow() {
-	info.url = $('.add-show input').val();
-	$.post('/get', {url: info.url}, function(r) {
-		info.title = $(r).find('h1#firstHeading i').text();
-		info.descr = $(r).find('#bodyContent p').eq(0).text() + '\n' + $(r).find('#bodyContent p').eq(1).text();
-		info.wiki = info.url;
-		info.genre = $(r).find('.infobox th').filter(function(){
-			return $(this).text() == 'Genre';			
-		}).siblings().find('a').eq(0).text();
-		info.country = $(r).find('.infobox th').filter(function(){
-			return $(this).text() == 'Country of origin';		
-		}).siblings().text();
-		info.channel = $(r).find('.infobox th').filter(function(){
-			return $(this).text() == 'Original channel';		
-		}).siblings().find('a').text();
-		info.createdby = $(r).find('.infobox th').filter(function(){
-			return $(this).text() == 'Created by';
-		}).siblings().find('a').text();
-		createShowFields();
-	});
-
-}
-
-function createShowFields() {
-	var html = '<div class="show"><table><tr><th>Title</th><th>IMDB</th><th>Wikipedia</th><th>EpGuides</th><th>Description</th></tr>';
-	html += '<tr><td><input type="text" name="title" value="'+info.title+'"></td><td><input type="text" name="imdb"></td><td><input type="text" name="wiki" value="'+info.wiki+'"></td><td><input type="text" name="epguides"></td><td rowspan="3"><textarea name="description">'+info.descr+'</textarea></td></tr>';
-	
-	html+= '<th>Genre</th><th>Created By</th><th>Country</th><th>Channel</th></tr>';
-	html+= '<tr><td><input type="text" name="genre" value="'+info.genre+'"></td><td><input type="text" name="createdby" value="'+info.createdby+'"></td><td><input type="text" name="country" value="'+info.country+'"></td><td><input type="text" name="channel"  value="'+info.channel+'"></td></tr>';
+	var title = $('.add-show input').val();
+	var html = '<div class="show"><table><tr><th>Title</th><th>EpGuides</th></tr>';
+	html += '<tr><td><input type="text" name="title" value="'+title+'"></td><td><input type="text" name="url"></td></tr>';
 	html+= '</table><button class="add-show">Add show</button></div>';
 	$('.edit-show').prepend(html);
 }
@@ -125,24 +105,11 @@ function addShow() {
 
 }
 
-
-function saveSourcesEng() {
+function saveSources() {
 	var data = {};
-	$(this).parent().find('input.en').each(function(){
+	$(this).parent().find('input.img').each(function(){
 		data[$(this).attr('name')] = $(this).val();	
 	});
-	data['lang'] = 'en';
-	$.post('/add/sources', data, function(r) {
-		alert(r);
-	});
-}
-
-function saveSourcesRus() {
-	var data = {};
-	$(this).parent().find('input.ru').each(function(){
-		data[$(this).attr('name')] = $(this).val();	
-	});
-	data['lang'] = 'ru';
 	$.post('/add/sources', data, function(r) {
 		alert(r);
 	});

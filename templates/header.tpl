@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="http://cdn.airy.me/reset.css">
 	<link rel="stylesheet" href="/assets/global.css">
 	<link rel="stylesheet/less" href="/assets/css3.less">
-	<script src="http://cdn.airy.me/jquery.min.js"></script>
+	<script src="http://cdn.airy.me/jquery.js"></script>
 	<script src="http://cdn.airy.me/less.js"></script>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
 	<script src="/assets/init.js"></script>

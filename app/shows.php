@@ -9,7 +9,6 @@ function shows_show($name) {
 	$vars['login_link'] = getLoginLink();
 	$vars['big_image'] = "style='background: url(/files/shows/b{$id}.png) no-repeat 0 0;'";
 	$vars['title'] = clean($vars['title']);
-	$vars['description'] = clean($vars['description']);
 	$vars['season_list'] = getSeasons($id);
 	$vars['episode_list'] = getEpisodes($id);
 	$vars['page_title'] = $vars['title'];
@@ -55,12 +54,13 @@ function getEpisodes($show, $season = 1) {
 	$ret = '';
 	foreach($db->loadAll() as $v) {
 			$title = clean($v['title']);
-			if (file_exists($_SERVER['DOCUMENT_ROOT']."/files/episodes/s{$v['id']}.png"))
-				$img = "/files/episodes/s{$v['id']}.png";
-			else
-				$img = "/files/episodes/notfound.png";
+			$db->select('sources', array('img'), array('episode'=>$v['id']), 'id', 1, false);
+			$img = $db->loadResult();
+			if ($img == "" or $img == null) {
+				$img = "/files/shows/notfound.png";
+			}	
 			$seotitle = clean_seo($title);
-			$ret .= "<div class='episode' data-episode='{$v['id']}'><a href='/watch/{$seoshow}/Season/${season}/Episode/{$v['episode']}/{$seotitle}.html'><img src='$img'><div>Episode {$v['episode']} - {$title}</div></a></div>";
+			$ret .= "<div class='episode' data-episode='{$v['id']}'><a href='/watch/{$seoshow}/Season/${season}/Episode/{$v['episode']}/{$seotitle}.html'><img src='$img'><div>E{$v['episode']} - {$title}</div></a></div>";
 	}
 	return $ret;
 }

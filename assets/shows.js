@@ -23,7 +23,12 @@ $(function(){
 	});
 
 
+	$('a.sources').click(function(){
+		var url = $(this).data('url');
+		$('.video iframe').attr('src',url);
+	});
 
+	$('a.sources').eq(0).click();
 
 
 });

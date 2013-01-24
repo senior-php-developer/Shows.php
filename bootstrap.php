@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(1);
+
 require 'app/includes/Factory.php';
 require 'app/global.php';
 require 'app/home.php';
@@ -9,8 +11,6 @@ require 'app/admin.php';
 
 require 'slim/Slim.php';
 require 'views/MyView.php';
-
-
 
 Slim::init('MyView');
 

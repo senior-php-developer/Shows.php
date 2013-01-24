@@ -63,7 +63,7 @@ class Database {
 		if ($order != null) $or = "ORDER BY `$order` $by"; else $or = '';
 		$sql = "SELECT $strFields FROM $table $strWhere $or LIMIT $limit";
 		//print_r('DEBUG:'.$sql);
-		$this->result = mysql_query($sql) or die(count($where));
+		$this->result = mysql_query($sql) or die(mysql_error());
 
 	}
 	
